@@ -73,8 +73,9 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				'montserrat': ['Montserrat', 'sans-serif'],
-				'sans': ['Open Sans', 'sans-serif'],
+				'serif': ['Cormorant', 'serif'],
+				'playfair': ['Playfair Display', 'serif'],
+				'dancing': ['Dancing Script', 'cursive'],
 			},
 			keyframes: {
 				'accordion-down': {

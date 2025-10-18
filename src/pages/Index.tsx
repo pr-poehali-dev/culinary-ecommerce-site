@@ -111,7 +111,7 @@ const Index = () => {
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-3xl md:text-4xl font-montserrat font-bold text-primary">
+            <h1 className="text-3xl md:text-4xl font-playfair font-medium text-primary">
               ELkaramEL 🍰
             </h1>
             <Sheet>
@@ -127,7 +127,7 @@ const Index = () => {
               </SheetTrigger>
               <SheetContent className="w-full sm:max-w-lg">
                 <SheetHeader>
-                  <SheetTitle className="font-montserrat text-2xl">Корзина</SheetTitle>
+                  <SheetTitle className="font-playfair text-2xl">Корзина</SheetTitle>
                 </SheetHeader>
                 <div className="mt-8 space-y-4">
                   {cart.length === 0 ? (
@@ -141,7 +141,7 @@ const Index = () => {
                         <div key={item.id} className="flex gap-4 bg-peach/20 p-4 rounded-lg animate-fade-in">
                           <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded-md" />
                           <div className="flex-1">
-                            <h3 className="font-semibold font-montserrat">{item.name}</h3>
+                            <h3 className="font-light font-playfair">{item.name}</h3>
                             <p className="text-sm text-muted-foreground">{item.price} ₽</p>
                             <div className="flex items-center gap-2 mt-2">
                               <Button
@@ -151,7 +151,7 @@ const Index = () => {
                               >
                                 <Icon name="Minus" size={14} />
                               </Button>
-                              <span className="w-8 text-center font-semibold">{item.quantity}</span>
+                              <span className="w-8 text-center font-light">{item.quantity}</span>
                               <Button
                                 size="sm"
                                 variant="outline"
@@ -173,7 +173,7 @@ const Index = () => {
                       ))}
                       <Separator />
                       <div className="space-y-2">
-                        <div className="flex justify-between text-lg font-semibold font-montserrat">
+                        <div className="flex justify-between text-lg font-light font-playfair">
                           <span>Итого:</span>
                           <span>{totalPrice} ₽</span>
                         </div>
@@ -207,7 +207,7 @@ const Index = () => {
                   key={section}
                   variant={activeSection === section ? 'default' : 'ghost'}
                   onClick={() => setActiveSection(section)}
-                  className="font-montserrat"
+                  className="font-playfair"
                 >
                   {labels[section]}
                 </Button>
@@ -221,7 +221,7 @@ const Index = () => {
         {activeSection === 'catalog' && (
           <section className="animate-fade-in">
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold font-montserrat mb-4">
+              <h2 className="text-4xl md:text-5xl font-medium font-playfair mb-4">
                 Наши кулинарные шедевры
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -245,9 +245,9 @@ const Index = () => {
                       </CardHeader>
                       <CardContent className="p-6">
                         <Badge className="mb-2 bg-lavender text-foreground">{product.category}</Badge>
-                        <CardTitle className="font-montserrat mb-2">{product.name}</CardTitle>
+                        <CardTitle className="font-playfair mb-2">{product.name}</CardTitle>
                         <p className="text-sm text-muted-foreground mb-4">{product.description}</p>
-                        <p className="text-2xl font-bold text-primary font-montserrat">{product.price} ₽</p>
+                        <p className="text-2xl font-medium text-primary font-playfair">{product.price} ₽</p>
                       </CardContent>
                       <CardFooter>
                         <Button
@@ -273,9 +273,9 @@ const Index = () => {
                         </CardHeader>
                         <CardContent className="p-6">
                           <Badge className="mb-2 bg-lavender text-foreground">{product.category}</Badge>
-                          <CardTitle className="font-montserrat mb-2">{product.name}</CardTitle>
+                          <CardTitle className="font-playfair mb-2">{product.name}</CardTitle>
                           <p className="text-sm text-muted-foreground mb-4">{product.description}</p>
-                          <p className="text-2xl font-bold text-primary font-montserrat">{product.price} ₽</p>
+                          <p className="text-2xl font-medium text-primary font-playfair">{product.price} ₽</p>
                         </CardContent>
                         <CardFooter>
                           <Button
@@ -298,7 +298,7 @@ const Index = () => {
 
         {activeSection === 'about' && (
           <section className="max-w-3xl mx-auto animate-fade-in">
-            <h2 className="text-4xl font-bold font-montserrat mb-6 text-center">О нас</h2>
+            <h2 className="text-4xl font-medium font-playfair mb-6 text-center">О нас</h2>
             <Card className="bg-peach/10">
               <CardContent className="p-8 space-y-4 text-lg">
                 <p>
@@ -311,15 +311,15 @@ const Index = () => {
                 </p>
                 <div className="flex gap-8 pt-4 flex-wrap justify-center">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-primary font-montserrat">10+</div>
+                    <div className="text-3xl font-medium text-primary font-playfair">10+</div>
                     <div className="text-sm text-muted-foreground">лет опыта</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-primary font-montserrat">5000+</div>
+                    <div className="text-3xl font-medium text-primary font-playfair">5000+</div>
                     <div className="text-sm text-muted-foreground">довольных клиентов</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-primary font-montserrat">50+</div>
+                    <div className="text-3xl font-medium text-primary font-playfair">50+</div>
                     <div className="text-sm text-muted-foreground">видов десертов</div>
                   </div>
                 </div>
@@ -330,7 +330,7 @@ const Index = () => {
 
         {activeSection === 'reviews' && (
           <section className="max-w-4xl mx-auto animate-fade-in">
-            <h2 className="text-4xl font-bold font-montserrat mb-8 text-center">Отзывы клиентов</h2>
+            <h2 className="text-4xl font-medium font-playfair mb-8 text-center">Отзывы клиентов</h2>
             <div className="grid gap-6 md:grid-cols-2">
               {[
                 { name: 'Анна', text: 'Лучшие торты в городе! Заказываем на все праздники.', rating: 5 },
@@ -341,11 +341,11 @@ const Index = () => {
                 <Card key={idx} className="bg-pink/10">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                      <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-medium">
                         {review.name[0]}
                       </div>
                       <div>
-                        <div className="font-semibold font-montserrat">{review.name}</div>
+                        <div className="font-light font-playfair">{review.name}</div>
                         <div className="flex gap-1">
                           {Array.from({ length: review.rating }).map((_, i) => (
                             <Icon key={i} name="Star" size={14} className="fill-coral text-coral" />
@@ -363,12 +363,12 @@ const Index = () => {
 
         {activeSection === 'promo' && (
           <section className="max-w-3xl mx-auto animate-fade-in">
-            <h2 className="text-4xl font-bold font-montserrat mb-8 text-center">Акции и спецпредложения</h2>
+            <h2 className="text-4xl font-medium font-playfair mb-8 text-center">Акции и спецпредложения</h2>
             <div className="space-y-4">
               <Card className="bg-gradient-to-r from-coral/20 to-pink/20 border-coral">
                 <CardContent className="p-8">
                   <Badge className="mb-4 bg-coral text-white">СКИДКА 20%</Badge>
-                  <h3 className="text-2xl font-bold font-montserrat mb-2">Первый заказ со скидкой!</h3>
+                  <h3 className="text-2xl font-medium font-playfair mb-2">Первый заказ со скидкой!</h3>
                   <p className="text-muted-foreground">
                     Оформите первый заказ и получите скидку 20% на весь ассортимент. Промокод: ПЕРВЫЙ20
                   </p>
@@ -377,7 +377,7 @@ const Index = () => {
               <Card className="bg-gradient-to-r from-lavender/20 to-peach/20 border-primary">
                 <CardContent className="p-8">
                   <Badge className="mb-4">ПОДАРОК</Badge>
-                  <h3 className="text-2xl font-bold font-montserrat mb-2">Бесплатная доставка</h3>
+                  <h3 className="text-2xl font-medium font-playfair mb-2">Бесплатная доставка</h3>
                   <p className="text-muted-foreground">
                     При заказе от 2000 ₽ доставка абсолютно бесплатна!
                   </p>
@@ -389,11 +389,11 @@ const Index = () => {
 
         {activeSection === 'delivery' && (
           <section className="max-w-3xl mx-auto animate-fade-in">
-            <h2 className="text-4xl font-bold font-montserrat mb-8 text-center">Доставка и оплата</h2>
+            <h2 className="text-4xl font-medium font-playfair mb-8 text-center">Доставка и оплата</h2>
             <div className="grid gap-6 md:grid-cols-2">
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 font-montserrat">
+                  <CardTitle className="flex items-center gap-2 font-playfair">
                     <Icon name="Truck" size={24} className="text-primary" />
                     Доставка
                   </CardTitle>
@@ -407,7 +407,7 @@ const Index = () => {
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 font-montserrat">
+                  <CardTitle className="flex items-center gap-2 font-playfair">
                     <Icon name="CreditCard" size={24} className="text-primary" />
                     Оплата
                   </CardTitle>
@@ -425,34 +425,34 @@ const Index = () => {
 
         {activeSection === 'contacts' && (
           <section className="max-w-3xl mx-auto animate-fade-in">
-            <h2 className="text-4xl font-bold font-montserrat mb-8 text-center">Контакты</h2>
+            <h2 className="text-4xl font-medium font-playfair mb-8 text-center">Контакты</h2>
             <Card className="bg-lavender/10">
               <CardContent className="p-8 space-y-6">
                 <div className="flex items-start gap-4">
                   <Icon name="MapPin" size={24} className="text-primary mt-1" />
                   <div>
-                    <h3 className="font-semibold font-montserrat mb-1">Адрес</h3>
+                    <h3 className="font-light font-playfair mb-1">Адрес</h3>
                     <p className="text-muted-foreground">ул. Кондитерская, д. 15</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Icon name="Phone" size={24} className="text-primary mt-1" />
                   <div>
-                    <h3 className="font-semibold font-montserrat mb-1">Телефон</h3>
+                    <h3 className="font-light font-playfair mb-1">Телефон</h3>
                     <p className="text-muted-foreground">+7 (999) 123-45-67</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Icon name="Mail" size={24} className="text-primary mt-1" />
                   <div>
-                    <h3 className="font-semibold font-montserrat mb-1">Email</h3>
+                    <h3 className="font-light font-playfair mb-1">Email</h3>
                     <p className="text-muted-foreground">info@elkaramel.ru</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Icon name="Clock" size={24} className="text-primary mt-1" />
                   <div>
-                    <h3 className="font-semibold font-montserrat mb-1">Режим работы</h3>
+                    <h3 className="font-light font-playfair mb-1">Режим работы</h3>
                     <p className="text-muted-foreground">Ежедневно с 9:00 до 21:00</p>
                   </div>
                 </div>
@@ -464,7 +464,7 @@ const Index = () => {
 
       <footer className="bg-gradient-to-r from-peach via-pink to-lavender py-8 mt-16">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-lg font-montserrat font-semibold mb-2">ELkaramEL 🍰</p>
+          <p className="text-lg font-playfair font-light mb-2">ELkaramEL 🍰</p>
           <p className="text-sm text-muted-foreground">© 2024 Все права защищены</p>
         </div>
       </footer>
