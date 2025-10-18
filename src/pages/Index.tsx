@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -74,6 +74,28 @@ const products: Product[] = [
 const Index = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [activeSection, setActiveSection] = useState('catalog');
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('scroll-animate');
+            if (entry.target.classList.contains('ornament')) {
+              entry.target.classList.add('ornament-animate');
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    elements.forEach((el) => observerRef.current?.observe(el));
+
+    return () => observerRef.current?.disconnect();
+  }, [activeSection]);
 
   const addToCart = (product: Product) => {
     setCart(prev => {
@@ -112,12 +134,12 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-dancing font-medium text-primary relative inline-block">
-                <span className="relative z-10">ELkaramEL</span>
-                <div className="absolute -top-3 -left-3 text-6xl opacity-20">❦</div>
-                <div className="absolute -bottom-3 -right-3 text-6xl opacity-20">❦</div>
+              <h1 className="text-4xl md:text-5xl font-cinzel font-normal text-gold relative inline-block tracking-wider">
+                <span className="relative z-10 [text-shadow:_0_1px_8px_rgb(218_165_32_/_40%)]">ELKARAMEL</span>
+                <div className="absolute -top-3 -left-3 text-5xl text-gold/40 ornament animate-on-scroll">❦</div>
+                <div className="absolute -bottom-3 -right-3 text-5xl text-gold/40 ornament animate-on-scroll">❦</div>
               </h1>
-              <p className="text-sm font-serif text-muted-foreground mt-1 tracking-widest">Кондитерская с душой</p>
+              <p className="text-xs font-serif text-muted-foreground mt-2 tracking-[0.3em] uppercase">Кондитерская с душой</p>
             </div>
             <Sheet>
               <SheetTrigger asChild>
@@ -226,11 +248,11 @@ const Index = () => {
         {activeSection === 'catalog' && (
           <section className="animate-fade-in">
             <div className="text-center mb-12 relative">
-              <div className="flourish-divider mb-8"></div>
-              <h2 className="text-4xl md:text-5xl font-light font-playfair mb-4 decorative-border inline-block px-12">
+              <div className="flourish-divider mb-8 animate-on-scroll"></div>
+              <h2 className="text-4xl md:text-5xl font-light font-playfair mb-4 decorative-border inline-block px-12 animate-on-scroll">
                 Наши кулинарные шедевры
               </h2>
-              <p className="text-lg font-serif text-muted-foreground max-w-2xl mx-auto mt-4">
+              <p className="text-lg font-serif text-muted-foreground max-w-2xl mx-auto mt-4 animate-on-scroll">
                 Свежая выпечка и десерты каждый день
               </p>
             </div>
@@ -245,17 +267,17 @@ const Index = () => {
               <TabsContent value="all" className="mt-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {products.map(product => (
-                    <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-scale-in">
+                    <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-scale-in animate-on-scroll">
                       <CardHeader className="p-0 relative overflow-hidden">
                         <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-                        <div className="absolute top-2 right-2 text-4xl text-white/30">❦</div>
+                        <div className="absolute top-2 right-2 text-4xl text-gold/40 ornament">❦</div>
                       </CardHeader>
                       <CardContent className="p-6 relative">
                         <Badge className="mb-2 bg-lavender text-foreground font-serif">{product.category}</Badge>
                         <CardTitle className="font-playfair mb-2 text-2xl">{product.name}</CardTitle>
                         <p className="text-sm font-serif text-muted-foreground mb-4">{product.description}</p>
                         <p className="text-2xl font-light text-primary font-playfair">{product.price} ₽</p>
-                        <div className="absolute bottom-2 left-2 text-3xl text-primary/10">✦</div>
+                        <div className="absolute bottom-2 left-2 text-3xl text-gold/40 ornament">✦</div>
                       </CardContent>
                       <CardFooter>
                         <Button
@@ -275,17 +297,17 @@ const Index = () => {
                 <TabsContent key={category} value={category} className="mt-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {products.filter(p => p.category === category).map(product => (
-                      <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                      <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-on-scroll">
                         <CardHeader className="p-0 relative overflow-hidden">
                           <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-                          <div className="absolute top-2 right-2 text-4xl text-white/30">❦</div>
+                          <div className="absolute top-2 right-2 text-4xl text-gold/40 ornament">❦</div>
                         </CardHeader>
                         <CardContent className="p-6 relative">
                           <Badge className="mb-2 bg-lavender text-foreground font-serif">{product.category}</Badge>
                           <CardTitle className="font-playfair mb-2 text-2xl">{product.name}</CardTitle>
                           <p className="text-sm font-serif text-muted-foreground mb-4">{product.description}</p>
                           <p className="text-2xl font-light text-primary font-playfair">{product.price} ₽</p>
-                          <div className="absolute bottom-2 left-2 text-3xl text-primary/10">✦</div>
+                          <div className="absolute bottom-2 left-2 text-3xl text-gold/40 ornament">✦</div>
                         </CardContent>
                         <CardFooter>
                           <Button
@@ -308,11 +330,11 @@ const Index = () => {
 
         {activeSection === 'about' && (
           <section className="max-w-3xl mx-auto animate-fade-in">
-            <div className="flourish-divider mb-8"></div>
-            <h2 className="text-4xl font-light font-playfair mb-6 text-center decorative-border inline-block px-12">О нас</h2>
-            <Card className="bg-peach/10 relative overflow-hidden">
-              <div className="absolute top-4 left-4 text-6xl text-primary/10">❦</div>
-              <div className="absolute bottom-4 right-4 text-6xl text-primary/10">❧</div>
+            <div className="flourish-divider mb-8 animate-on-scroll"></div>
+            <h2 className="text-4xl font-light font-playfair mb-6 text-center decorative-border inline-block px-12 animate-on-scroll">О нас</h2>
+            <Card className="bg-peach/10 relative overflow-hidden animate-on-scroll">
+              <div className="absolute top-4 left-4 text-6xl text-gold/40 ornament">❦</div>
+              <div className="absolute bottom-4 right-4 text-6xl text-gold/40 ornament">❧</div>
               <CardContent className="p-8 space-y-4 text-lg font-serif relative z-10">
                 <p>
                   ELkaramEL — это семейная кондитерская с многолетним опытом создания вкусных десертов.
@@ -343,8 +365,8 @@ const Index = () => {
 
         {activeSection === 'reviews' && (
           <section className="max-w-4xl mx-auto animate-fade-in">
-            <div className="flourish-divider mb-8"></div>
-            <h2 className="text-4xl font-light font-playfair mb-8 text-center decorative-border inline-block px-12">Отзывы клиентов</h2>
+            <div className="flourish-divider mb-8 animate-on-scroll"></div>
+            <h2 className="text-4xl font-light font-playfair mb-8 text-center decorative-border inline-block px-12 animate-on-scroll">Отзывы клиентов</h2>
             <div className="grid gap-6 md:grid-cols-2">
               {[
                 { name: 'Анна', text: 'Лучшие торты в городе! Заказываем на все праздники.', rating: 5 },
@@ -352,8 +374,8 @@ const Index = () => {
                 { name: 'Елена', text: 'Красиво, вкусно и всегда свежее. Рекомендую!', rating: 5 },
                 { name: 'Дмитрий', text: 'Макаруны - это что-то! Такого вкуса не пробовал нигде.', rating: 5 },
               ].map((review, idx) => (
-                <Card key={idx} className="bg-pink/10 relative overflow-hidden">
-                  <div className="absolute top-2 right-2 text-4xl text-primary/10">✦</div>
+                <Card key={idx} className="bg-pink/10 relative overflow-hidden animate-on-scroll">
+                  <div className="absolute top-2 right-2 text-4xl text-gold/40 ornament">✦</div>
                   <CardContent className="p-6 relative z-10">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-light">
@@ -378,10 +400,10 @@ const Index = () => {
 
         {activeSection === 'promo' && (
           <section className="max-w-3xl mx-auto animate-fade-in">
-            <div className="flourish-divider mb-8"></div>
-            <h2 className="text-4xl font-light font-playfair mb-8 text-center decorative-border inline-block px-12">Акции и спецпредложения</h2>
+            <div className="flourish-divider mb-8 animate-on-scroll"></div>
+            <h2 className="text-4xl font-light font-playfair mb-8 text-center decorative-border inline-block px-12 animate-on-scroll">Акции и спецпредложения</h2>
             <div className="space-y-4">
-              <Card className="bg-gradient-to-r from-coral/20 to-pink/20 border-coral">
+              <Card className="bg-gradient-to-r from-coral/20 to-pink/20 border-coral animate-on-scroll">
                 <CardContent className="p-8">
                   <Badge className="mb-4 bg-coral text-white">СКИДКА 20%</Badge>
                   <h3 className="text-2xl font-medium font-playfair mb-2">Первый заказ со скидкой!</h3>
@@ -390,7 +412,7 @@ const Index = () => {
                   </p>
                 </CardContent>
               </Card>
-              <Card className="bg-gradient-to-r from-lavender/20 to-peach/20 border-primary">
+              <Card className="bg-gradient-to-r from-lavender/20 to-peach/20 border-primary animate-on-scroll">
                 <CardContent className="p-8">
                   <Badge className="mb-4">ПОДАРОК</Badge>
                   <h3 className="text-2xl font-medium font-playfair mb-2">Бесплатная доставка</h3>
@@ -405,10 +427,10 @@ const Index = () => {
 
         {activeSection === 'delivery' && (
           <section className="max-w-3xl mx-auto animate-fade-in">
-            <div className="flourish-divider mb-8"></div>
-            <h2 className="text-4xl font-light font-playfair mb-8 text-center decorative-border inline-block px-12">Доставка и оплата</h2>
+            <div className="flourish-divider mb-8 animate-on-scroll"></div>
+            <h2 className="text-4xl font-light font-playfair mb-8 text-center decorative-border inline-block px-12 animate-on-scroll">Доставка и оплата</h2>
             <div className="grid gap-6 md:grid-cols-2">
-              <Card>
+              <Card className="animate-on-scroll">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 font-playfair">
                     <Icon name="Truck" size={24} className="text-primary" />
@@ -422,7 +444,7 @@ const Index = () => {
                   <p>• Самовывоз бесплатно</p>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="animate-on-scroll">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 font-playfair">
                     <Icon name="CreditCard" size={24} className="text-primary" />
@@ -442,9 +464,9 @@ const Index = () => {
 
         {activeSection === 'contacts' && (
           <section className="max-w-3xl mx-auto animate-fade-in">
-            <div className="flourish-divider mb-8"></div>
-            <h2 className="text-4xl font-light font-playfair mb-8 text-center decorative-border inline-block px-12">Контакты</h2>
-            <Card className="bg-lavender/10">
+            <div className="flourish-divider mb-8 animate-on-scroll"></div>
+            <h2 className="text-4xl font-light font-playfair mb-8 text-center decorative-border inline-block px-12 animate-on-scroll">Контакты</h2>
+            <Card className="bg-lavender/10 animate-on-scroll">
               <CardContent className="p-8 space-y-6">
                 <div className="flex items-start gap-4">
                   <Icon name="MapPin" size={24} className="text-primary mt-1" />
@@ -481,11 +503,11 @@ const Index = () => {
       </main>
 
       <footer className="bg-gradient-to-r from-peach via-pink to-lavender py-12 mt-16 relative overflow-hidden">
-        <div className="absolute top-4 left-1/4 text-5xl text-white/20">❦</div>
-        <div className="absolute bottom-4 right-1/4 text-5xl text-white/20">❧</div>
+        <div className="absolute top-4 left-1/4 text-5xl text-gold/40 ornament">❦</div>
+        <div className="absolute bottom-4 right-1/4 text-5xl text-gold/40 ornament">❧</div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="flourish-divider mb-4"></div>
-          <p className="text-3xl font-dancing font-light mb-2 text-primary">ELkaramEL</p>
+          <div className="flourish-divider mb-4 animate-on-scroll"></div>
+          <p className="text-3xl font-cinzel font-normal mb-2 text-gold tracking-wider [text-shadow:_0_1px_8px_rgb(218_165_32_/_40%)]">ELKARAMEL</p>
           <p className="text-sm font-serif text-muted-foreground tracking-widest">Кондитерская с душой</p>
           <p className="text-xs text-muted-foreground mt-4">© 2024 Все права защищены</p>
         </div>

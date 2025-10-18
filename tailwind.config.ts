@@ -66,6 +66,7 @@ export default {
 				pink: '#FFDEE2',
 				lavender: '#E5DEFF',
 				coral: '#F97316',
+				gold: 'hsl(var(--gold))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -76,6 +77,7 @@ export default {
 				'serif': ['Cormorant', 'serif'],
 				'playfair': ['Playfair Display', 'serif'],
 				'dancing': ['Dancing Script', 'cursive'],
+				'cinzel': ['Cinzel', 'serif'],
 			},
 			keyframes: {
 				'accordion-down': {
