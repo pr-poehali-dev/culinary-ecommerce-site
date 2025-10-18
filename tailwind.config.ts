@@ -78,6 +78,8 @@ export default {
 				'playfair': ['Playfair Display', 'serif'],
 				'dancing': ['Dancing Script', 'cursive'],
 				'cinzel': ['Cinzel', 'serif'],
+				'brush': ['Alex Brush', 'cursive'],
+				'vibes': ['Great Vibes', 'cursive'],
 			},
 			keyframes: {
 				'accordion-down': {

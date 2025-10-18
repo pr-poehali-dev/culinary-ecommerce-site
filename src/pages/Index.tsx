@@ -133,13 +133,15 @@ const Index = () => {
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-cinzel font-normal text-gold relative inline-block tracking-wider">
-                <span className="relative z-10 [text-shadow:_0_1px_8px_rgb(218_165_32_/_40%)]">ELKARAMEL</span>
-                <div className="absolute -top-3 -left-3 text-5xl text-gold/40 ornament animate-on-scroll">❦</div>
-                <div className="absolute -bottom-3 -right-3 text-5xl text-gold/40 ornament animate-on-scroll">❦</div>
-              </h1>
-              <p className="text-xs font-serif text-muted-foreground mt-2 tracking-[0.3em] uppercase">Кондитерская с душой</p>
+            <div className="text-center flex flex-col items-center">
+              <p className="text-xs font-serif text-foreground/60 tracking-[0.2em] mb-1">С ЛЮБОВЬЮ</p>
+              <div className="relative inline-flex items-center gap-3">
+                <span className="text-4xl">🧁</span>
+                <h1 className="text-4xl md:text-5xl font-vibes text-foreground relative inline-block">
+                  <span className="relative z-10">ELkaramEL</span>
+                </h1>
+                <span className="text-4xl">🍰</span>
+              </div>
             </div>
             <Sheet>
               <SheetTrigger asChild>
@@ -507,8 +509,15 @@ const Index = () => {
         <div className="absolute bottom-4 right-1/4 text-5xl text-gold/40 ornament">❧</div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="flourish-divider mb-4 animate-on-scroll"></div>
-          <p className="text-3xl font-cinzel font-normal mb-2 text-gold tracking-wider [text-shadow:_0_1px_8px_rgb(218_165_32_/_40%)]">ELKARAMEL</p>
-          <p className="text-sm font-serif text-muted-foreground tracking-widest">Кондитерская с душой</p>
+          <div className="flex flex-col items-center">
+            <p className="text-xs font-serif text-foreground/60 tracking-[0.2em] mb-1">С ЛЮБОВЬЮ</p>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="text-3xl">🧁</span>
+              <p className="text-4xl font-vibes text-foreground">ELkaramEL</p>
+              <span className="text-3xl">🍰</span>
+            </div>
+          </div>
+          <p className="text-sm font-serif text-muted-foreground tracking-widest mt-2">Кондитерская с душой</p>
           <p className="text-xs text-muted-foreground mt-4">© 2024 Все права защищены</p>
         </div>
       </footer>
